@@ -8,7 +8,7 @@ public class PostController {
 	
 	@GetMapping("/test")
 	public String test() {
-		return "post/subscribePost";
+		return "post/home";
 	}
 
 }

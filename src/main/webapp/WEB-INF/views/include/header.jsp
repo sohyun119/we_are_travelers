@@ -26,36 +26,36 @@
 						</div>
 						<div class="col-8 text-center">
 							<form action="#" class="search-form d-inline-block d-lg-none">
-								<input type="text" class="form-control" placeholder="Search...">
+								<input type="text" class="form-control" placeholder="지역별 최신글 검색...">
 								<span class="bi-search"></span>
 							</form>
 
 							<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
-								<li class="active"><a href="index.html">Home</a></li>
+								<li class="active"><a href="/post/home.jsp">Home</a></li>
 								<li class="has-children">
-									<a href="category.html">Pages</a>
+									<a href="#">Post</a>
 									<ul class="dropdown">
-										<li><a href="search-result.html">Search Result</a></li>
-										<li><a href="blog.html">Blog</a></li>
-										<li><a href="single.html">Blog Single</a></li>
-										<li><a href="category.html">Category</a></li>
-										<li><a href="about.html">About</a></li>
-										<li><a href="contact.html">Contact Us</a></li>
-										<li><a href="#">Menu One</a></li>
-										<li><a href="#">Menu Two</a></li>
-										<li class="has-children">
-											<a href="#">Dropdown</a>
-											<ul class="dropdown">
-												<li><a href="#">Sub Menu One</a></li>
-												<li><a href="#">Sub Menu Two</a></li>
-												<li><a href="#">Sub Menu Three</a></li>
-											</ul>
-										</li>
+										<li><a href="#">관심멤버 최신글</a></li>
+										<li><a href="#">지역 최신글</a></li>
+										<li><a href="#">여행자 커뮤니티</a></li>
 									</ul>
 								</li>
-								<li><a href="category.html">Culture</a></li>
-								<li><a href="category.html">Business</a></li>
-								<li><a href="category.html">Politics</a></li>
+								<li class="has-children">
+									<a href="#">My home</a>
+									<ul class="dropdown">
+										<li><a href="#">마이홈</a></li>
+										<li><a href="#">글 작성</a></li>
+										<li><a href="#">설정</a></li>
+									</ul>
+								</li>
+								<li class="has-children">
+									<a href="#">Be Ready</a>
+									<ul class="dropdown">
+										<li><a href="#">날씨검색</a></li>
+										<li><a href="#">여행계획 추천</a></li>
+										<li><a href="#">뉴스보기</a></li>
+									</ul>
+								</li>
 							</ul>
 						</div>
 						<div class="col-2 text-end">
