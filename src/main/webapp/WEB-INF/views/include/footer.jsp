@@ -6,81 +6,31 @@
 			<div class="row">
 				<div class="col-lg-4">
 					<div class="widget">
-						<h3 class="mb-4">About</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div> <!-- /.widget -->
-					<div class="widget">
-						<h3>Social</h3>
-						<ul class="list-unstyled social">
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
-							<li><a href="#"><span class="icon-pinterest"></span></a></li>
-							<li><a href="#"><span class="icon-dribbble"></span></a></li>
-						</ul>
+						<h3 class="mb-4">We are Travelers</h3>
+						<p>: AWS기반 여행자 커뮤니티 웹 사이트</p>
 					</div> <!-- /.widget -->
 				</div> <!-- /.col-lg-4 -->
 				<div class="col-lg-4 ps-lg-5">
 					<div class="widget">
-						<h3 class="mb-4">Company</h3>
+						<h3 class="mb-4">프로젝트 설계 문서</h3>
 						<ul class="list-unstyled float-start links">
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Services</a></li>
-							<li><a href="#">Vision</a></li>
-							<li><a href="#">Mission</a></li>
-							<li><a href="#">Terms</a></li>
-							<li><a href="#">Privacy</a></li>
+							<li><a href="#">프로젝트 설계서</a></li>
+							<li><a href="#">요구사항 정의서</a></li>
+							<li><a href="#">간트 차트</a></li>
 						</ul>
 						<ul class="list-unstyled float-start links">
-							<li><a href="#">Partners</a></li>
-							<li><a href="#">Business</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">FAQ</a></li>
-							<li><a href="#">Creative</a></li>
+							<li><a href="#">테이블 정의서</a></li>
+							<li><a href="#">클래스 정의서</a></li>
+							<li><a href="#">URL 설계</a></li>
 						</ul>
 					</div> <!-- /.widget -->
 				</div> <!-- /.col-lg-4 -->
 				<div class="col-lg-4">
 					<div class="widget">
-						<h3 class="mb-4">Recent Post Entry</h3>
+						<h3 class="mb-4">git hub 바로가기</h3>
 						<div class="post-entry-footer">
-							<ul>
-								<li>
-									<a href="">
-										<img src="images/img_1_sq.jpg" alt="Image placeholder" class="me-4 rounded">
-										<div class="text">
-											<h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-											<div class="post-meta">
-												<span class="mr-2">March 15, 2018 </span>
-											</div>
-										</div>
-									</a>
-								</li>
-								<li>
-									<a href="">
-										<img src="images/img_2_sq.jpg" alt="Image placeholder" class="me-4 rounded">
-										<div class="text">
-											<h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-											<div class="post-meta">
-												<span class="mr-2">March 15, 2018 </span>
-											</div>
-										</div>
-									</a>
-								</li>
-								<li>
-									<a href="">
-										<img src="images/img_3_sq.jpg" alt="Image placeholder" class="me-4 rounded">
-										<div class="text">
-											<h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-											<div class="post-meta">
-												<span class="mr-2">March 15, 2018 </span>
-											</div>
-										</div>
-									</a>
-								</li>
-							</ul>
+							<a href="https://github.com/sohyun119">Lee Sohyun의 Git hub 보러가기</a>
+							<a href="https://github.com/sohyun119/we_are_travelers">해당 프로젝트 Git hub Repository 보러가기</a>
 						</div>
 
 
@@ -90,15 +40,8 @@
 
 			<div class="row mt-5">
 				<div class="col-12 text-center">
-          <!-- 
-              **==========
-              NOTE: 
-              Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
-              **==========
-            -->
-
-            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a>  Distributed by <a href="https://themewagon.com">ThemeWagon</a> <!-- License information: https://untree.co/license/ -->
-            </p>
+  
+            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> 이소현. All Rights Reserved. &mdash;</p>
           </div>
         </div>
       </div> <!-- /.container -->
