@@ -12,5 +12,10 @@ public class PostController {
 	public String test() {
 		return "post/home";
 	}
+	
+	@GetMapping("/timeline")
+	public String test2() {
+		return "post/timelineView";
+	}
 
 }
