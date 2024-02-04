@@ -17,5 +17,10 @@ public class PostController {
 	public String test2() {
 		return "post/timelineView";
 	}
+	
+	@GetMapping("/create")
+	public String test3() {
+		return "post/createView";
+	}
 
 }
