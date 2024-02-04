@@ -35,7 +35,7 @@
 </head>
 <body>
 
-	<!-- header -->
+	<!-- start header -->
 	<c:import url="/WEB-INF/views/include/header.jsp" />
 
 	<div class="hero overlay inner-page bg-primary py-5">
@@ -43,61 +43,41 @@
 			<div class="row align-items-center justify-content-center text-center pt-5">
 				<div class="col-lg-6">
 					<h1 class="heading text-white mb-3" data-aos="fade-up">Creating a Post</h1>
-					<h5 class="heading text-white mb-3" data-aos="fade-up">위치와 사진을 선택하고, 여행을 기록해보세요!</h5>
+					<h5 class="heading text-white mb-3" data-aos="fade-up">위치와 사진을 공유하고, 여행을 기록해보세요!</h5>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- end header -->
 	
 	<div class="section">
 		<div class="container">
 			<div class="row">
+			
+				<!-- start left map -->
 				<div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
 					<div class="contact-info">
-
 						<div class="address mt-2">
-							<i class="icon-room"></i>
+							<i class="bi bi-geo-alt"></i>
 							<h4 class="mb-2">Location:</h4>
-							<p>43 Raymouth Rd. Baltemoer,<br> London 3910</p>
+							<p>위치 이름</p>
 						</div>
-
-						<div class="open-hours mt-4">
-							<i class="icon-clock-o"></i>
-							<h4 class="mb-2">Open Hours:</h4>
-							<p>
-								Sunday-Friday:<br>
-								11:00 AM - 2300 PM
-							</p>
+						<div>
+							<!-- google map 띄우기 -->
 						</div>
-
-						<div class="email mt-4">
-							<i class="icon-envelope"></i>
-							<h4 class="mb-2">Email:</h4>
-							<p>info@Untree.co</p>
-						</div>
-
-						<div class="phone mt-4">
-							<i class="icon-phone"></i>
-							<h4 class="mb-2">Call:</h4>
-							<p>+1 1234 55488 55</p>
-						</div>
-
 					</div>
 				</div>
+				<!-- end left map -->
+				
+				<!-- start right input -->
 				<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
 					<form action="#">
 						<div class="row">
-							<div class="col-6 mb-3">
-								<input type="text" class="form-control" placeholder="Your Name">
-							</div>
-							<div class="col-6 mb-3">
-								<input type="email" class="form-control" placeholder="Your Email">
+							<div class="col-12 mb-3">
+								<input type="" class="form-control" placeholder="사진 선택">
 							</div>
 							<div class="col-12 mb-3">
-								<input type="text" class="form-control" placeholder="Subject">
-							</div>
-							<div class="col-12 mb-3">
-								<textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+								<textarea name="" id="" cols="30" rows="13" class="form-control" placeholder="text.."></textarea>
 							</div>
 
 							<div class="col-12">
@@ -106,9 +86,10 @@
 						</div>
 					</form>
 				</div>
+				<!-- end right input -->
 			</div>
 		</div>
-	</div> <!-- /.untree_co-section -->
+	</div> 
 
 	<!-- footer -->
 	<c:import url="/WEB-INF/views/include/footer.jsp" />
