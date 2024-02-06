@@ -14,10 +14,6 @@
 	<meta name="keywords" content="bootstrap, bootstrap5" />
 	
 	
-	<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key= + ${google.maps.api.key} + &libraries=places&callback=initMap">
-	</script>
-	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -65,10 +61,11 @@
 						<div class="address mt-2">
 							<i class="bi bi-geo-alt"></i>
 							<h4 class="mb-2">Location:</h4>
-							<p>위치 이름</p>
+							<h4>지역이름</h4>
 						</div>
 						<div>
 							<!-- google map 띄우기 -->
+							
 							<div id="map" style="height: 400px; width: 100%;"></div>
 						    <script>
 						        function initMap() {
@@ -91,7 +88,7 @@
 								<input type="" class="form-control" placeholder="사진 선택">
 							</div>
 							<div class="col-12 mb-3">
-								<textarea name="" id="" cols="30" rows="13" class="form-control" placeholder="text.."></textarea>
+								<textarea name="" id="" cols="30" rows="12" class="form-control" placeholder="text.."></textarea>
 							</div>
 
 							<div class="col-12">
@@ -128,6 +125,10 @@
     <script src="/static/js/navbar.js"></script>
     <script src="/static/js/counter.js"></script>
     <script src="/static/js/custom.js"></script>
+    <!-- google map api -->
+    <script async defer
+        src="http://maps.googleapis.com/maps/api/js?key= + ${googlemapkey} + &libraries=places&callback=initMap">
+	</script>
 
     
   </body>
