@@ -12,7 +12,12 @@
 
 	<meta name="description" content="" />
 	<meta name="keywords" content="bootstrap, bootstrap5" />
-
+	
+	
+	<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key= + ${google.maps.api.key} + &libraries=places&callback=initMap">
+	</script>
+	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -29,7 +34,7 @@
 	<link rel="stylesheet" href="/static/css/style.css">
 
 	<link rel="stylesheet" href="/css/flatpickr.min.css">
-
+	
 
 	<title>글 작성</title>
 </head>
@@ -64,6 +69,15 @@
 						</div>
 						<div>
 							<!-- google map 띄우기 -->
+							<div id="map" style="height: 400px; width: 100%;"></div>
+						    <script>
+						        function initMap() {
+						            var map = new google.maps.Map(document.getElementById('map'), {
+						                center: {lat: -34.397, lng: 150.644},
+						                zoom: 8
+						            });
+						        }
+						    </script>
 						</div>
 					</div>
 				</div>
