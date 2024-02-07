@@ -60,8 +60,11 @@
 					<div class="contact-info">
 						<div class="address mt-2">
 							<i class="bi bi-geo-alt"></i>
-							<h4 class="mb-2">Location:</h4>
-							<h4>지역이름</h4>
+							<h4 class="mb-2">
+								Locatio name : 
+								<input type="text" id="location_name">
+							</h4>
+							
 						</div>
 						<div>
 							<!-- google map 띄우기 -->
@@ -88,7 +91,7 @@
 								<input type="" class="form-control" placeholder="사진 선택">
 							</div>
 							<div class="col-12 mb-3">
-								<textarea name="" id="" cols="30" rows="12" class="form-control" placeholder="text.."></textarea>
+								<textarea name="" id="" cols="30" rows="13" class="form-control" placeholder="text.."></textarea>
 							</div>
 
 							<div class="col-12">
