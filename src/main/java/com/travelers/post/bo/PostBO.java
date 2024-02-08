@@ -1,5 +1,9 @@
 package com.travelers.post.bo;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,11 +26,20 @@ public class PostBO {
     }
 	
 	 
-    public String getCoordinates(String address) {
-        String apiUrl = "https://maps.googleapis.com/maps/api/geocode/json";
-        String url = String.format("%s?address=%s&key=%s", apiUrl, address, googlemapskey);
-
-        return restTemplate.getForObject(url, String.class);
+    public String getCoordinates(String locationName) {
+    	try {
+			String encodedLocation = URLEncoder.encode(locationName, "UTF-8");
+			String apiUrl = "https://maps.googleapis.com/maps/api/geocode/json";
+	        String url = String.format("%s?address=%s&key=%s", apiUrl, encodedLocation, googlemapskey);
+	        
+			
+			return restTemplate.getForObject(url, String.class);
+	        
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return null;
+		}
+       
     }
 
 }

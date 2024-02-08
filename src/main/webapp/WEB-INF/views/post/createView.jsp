@@ -13,6 +13,13 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="bootstrap, bootstrap5" />
 	
+	<!-- jQuery 로드 -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+	
 	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,8 +68,8 @@
 						<div class="address mt-2">
 							<i class="bi bi-geo-alt"></i>
 							<h4 class="mb-2">
-								Locatio name : 
-								<input type="text" id="location_name">
+								Location name : 
+								<input type="text" id="locationName"><button id="locationBtn" type="button" class="btn" >조회</button>
 							</h4>
 							
 						</div>
@@ -116,6 +123,31 @@
     	</div>
     </div>
 
+	<script>
+			
+			$("#locationBtn").on("click", function(){
+				alert("버튼");
+				var locationName = $("#locationName").val();
+				
+				$.ajax({
+					type:"post",
+					url:"/post/getCoordinates",
+					data:{"locationName":locationName},
+					success:function(data){
+						if(data.result == "fail"){
+							alert("지역이름 조회 실패");
+						}
+						else{
+							alert("지역 정보 : "+ result);
+						}
+					},
+					error:function(){
+						alert("지역이름 조회 에러 발생");
+					}
+				});
+			});
+	
+	</script>
 
     <script src="/static/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/tiny-slider.js"></script>
@@ -132,6 +164,8 @@
     <script async defer
         src="http://maps.googleapis.com/maps/api/js?key= + ${googlemapkey} + &libraries=places&callback=initMap">
 	</script>
+	
+	
 
     
   </body>
