@@ -16,7 +16,7 @@ public class PostRestController {
 	private PostBO postBO;
 	
 	@PostMapping("/getCoordinates")
-	public String getCoordinates(@RequestParam("locationName") String locationName) {
+	public String getCoordinatess(@RequestParam("locationName") String locationName) {
 		
 		// 외부 API 가져오는 방법으로 (반환 타입 확인) 다시 (weather API 참고) 
 		String result = postBO.getCoordinates(locationName);
@@ -26,6 +26,7 @@ public class PostRestController {
 		return result;
 		
 	}
+	
 	
 	
 }
