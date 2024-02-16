@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.tomcat.util.json.JSONParser;
@@ -71,6 +72,12 @@ public class PostBO {
     	JSONObject jsonObject;
     	
     	jsonObject = jsonParser.parse(jsonString);
+    	
+    	Map<String, Object> resultMap = new HashMap<>();
+    	
+    	JSONObject mainData = (JSONObject) jsonObject.get("main");
+    	resultMap.put("temt", mainData.get("temp"));N
+    	
     	
     	
     }
