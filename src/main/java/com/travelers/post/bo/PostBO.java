@@ -9,7 +9,9 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.tomcat.util.json.JSONParser;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -71,12 +73,16 @@ public class PostBO {
     	JSONParser jsonParser = new JSONParser();
     	JSONObject jsonObject;
     	
-    	jsonObject = jsonParser.parse(jsonString);
+    	try {
+			jsonObject = (JSONObject) jsonParser.parse(jsonString);
+		} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
     	
     	Map<String, Object> resultMap = new HashMap<>();
     	
-    	JSONObject mainData = (JSONObject) jsonObject.get("main");
-    	resultMap.put("temt", mainData.get("temp"));N
+    	JSONObject mainData = (JSONObject) jsonObject.get("result.geometry.location.lat.lng");
+    	resultMap.put("")
     	
     	
     	

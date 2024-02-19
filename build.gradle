@@ -28,6 +28,8 @@ dependencies {
 	
 	// JSON 
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
     
     // security
     implementation 'org.springframework.boot:spring-boot-starter-security'
