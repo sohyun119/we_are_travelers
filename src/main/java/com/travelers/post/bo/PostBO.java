@@ -9,11 +9,14 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import com.travelers.post.dto.GeocoderResultDTO;
 
 @Service
 public class PostBO {
@@ -33,13 +36,11 @@ public class PostBO {
 	
 	
 	// google apis 에서 지역이름에 따른 위도, 경도 등 정보 가져오기
-    public String getCoordinates(String locationName) {
+    public String getCoordinatesString(String locationName) {
+    	
     	try {
 			String encodedLocation = URLEncoder.encode(locationName, "UTF-8");
-			String apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+locationName+"&key="+googlemapskey;
-	    
-			
-			//return restTemplate.getForObject(url, String.class);
+			String apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+encodedLocation+"&key="+googlemapskey;
 			
 			URL url = new URL(apiUrl);
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -62,12 +63,12 @@ public class PostBO {
 			
 	        
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return "failed to get response";
 		}
        
     }
+    
+
     
     private Map<String, Object> parseCoordinates(String jsonString){
     	JSONParser jsonParser = new JSONParser();
@@ -81,11 +82,33 @@ public class PostBO {
     	
     	Map<String, Object> resultMap = new HashMap<>();
     	
-    	JSONObject mainData = (JSONObject) jsonObject.get("result.geometry.location.lat.lng");
-    	resultMap.put("")
+    	JSONObject result = (JSONObject) jsonObject.get("result");
+    	JSONArray geometry = (JSONArray) result.get("geometry");
+    	JSONObject location = (JSONObject) geometry.get(0);
+    	resultMap.put("lat", location.get("lat"));
+    	resultMap.put("lng", location.get("lng"));
     	
+    	
+    	return resultMap;
     	
     	
     }
+    
+    
+    public GeocoderResultDTO getCoordinatesApi(String locationName) {
+    	String coordinatesData = getCoordinatesString(locationName);
+    	
+    	Map<String, Object> parseCoordinates = parseCoordinates(coordinatesData);
+    	
+    	GeocoderResultDTO geocoderResultDTO = new GeocoderResultDTO();
+    	geocoderResultDTO.setLocationName(locationName);
+    	geocoderResultDTO.setLat(parseCoordinates.get("lat").toString());
+    	geocoderResultDTO.setLng(parseCoordinates.get("lng").toString());
+    	
+    	return geocoderResultDTO;
+    }
+    
+    
+    
 
 }
