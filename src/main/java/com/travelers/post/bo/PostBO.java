@@ -82,9 +82,12 @@ public class PostBO {
     	
     	Map<String, Object> resultMap = new HashMap<>();
     	
-    	JSONObject result = (JSONObject) jsonObject.get("result");
-    	JSONArray geometry = (JSONArray) result.get("geometry");
-    	JSONObject location = (JSONObject) geometry.get(0);
+    	JSONArray results = (JSONArray) jsonObject.get("results");
+        JSONObject result = (JSONObject) results.get(0);
+        
+        JSONObject geometry = (JSONObject) result.get("geometry");
+        JSONObject location = (JSONObject) geometry.get("location");
+        
     	resultMap.put("lat", location.get("lat"));
     	resultMap.put("lng", location.get("lng"));
     	
@@ -110,5 +113,5 @@ public class PostBO {
     
     
     
-
+ 
 }
