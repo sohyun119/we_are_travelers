@@ -75,16 +75,7 @@
 						</div>
 						<div>
 							<!-- google map 띄우기 -->
-							
 							<div id="map" style="height: 400px; width: 100%;"></div>
-						    <script>
-						        function initMap() {
-						            var map = new google.maps.Map(document.getElementById('map'), {
-						                center: {lat: -34.397, lng: 150.644},
-						                zoom: 8
-						            });
-						        }
-						    </script>
 						</div>
 					</div>
 				</div>
@@ -124,34 +115,54 @@
     </div>
 
 	<script>
+	
+			var ajaxData = {};
+			var map;
 			
-			$("#locationBtn").on("click", function(){
-				alert("버튼");
-				var locationName = $("#locationName").val();
+			function initMap() {
+	            map = new google.maps.Map(document.getElementById('map'), {
+	                center: {lat: 37.497952, lng: 127.027619},
+	                zoom: 15
+	            });
+	        }
+			
+			function updateMap() {
+	            map.setCenter({lat: ajaxData.lat, lng: ajaxData.lng});
+	        }
+			
+			$(document).ready(function () {
 				
-				$.ajax({
-					type:"post",
-					url:"/post/getCoordinates",
-					data:{"locationName":locationName},
-					success:function(data){
-						if(data.result == "fail"){
-							alert("지역이름 조회 실패");
+				initMap();
+				
+				$("#locationBtn").on("click", function(){
+					alert("버튼");
+					var locationName = $("#locationName").val();
+					
+					$.ajax({
+						type:"get",
+						url:"/post/getCoordinates",
+						data:{"locationName":locationName},
+						success:function(data){
+							ajaxData = data;
+							alert(ajaxData.lat);
+							
+							updateMap();
+						},
+						error:function(){
+							console.log("지역이름 조회 Error: " + error);
 						}
-						else{
-							alert("지역 정보 : "+ result);
-						}
-					},
-					error:function(){
-						alert("지역이름 조회 에러 발생");
-					}
+					});
 				});
 			});
+			
+			
+			
 	
 	</script>
 
     <script src="/static/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/tiny-slider.js"></script>
-
+	
     <script src="/static/js/flatpickr.min.js"></script>
 
 
