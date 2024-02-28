@@ -127,7 +127,11 @@
 	        }
 			
 			function updateMap() {
-				map.setCenter({lat:ajaxData.lat, lng:ajaxData.lng});
+				map.setCenter({lat: 37.4673709, lng: 126.9453359});
+				// ajaxData.lat 과 ajaxData.lng 자리에 그냥 숫자를 넣었더니 setCenter이 잘 작동되었다.
+				// 또한 ajaxData.lat와 ajaxData.lng 는 값이 잘 반환되는 것을 볼 수 있다.
+				// 따라서 뷰를 못나타냈던 이유는 변수를 숫자로 바꾸는 과정이 없어서로 볼 수 있다!!!!
+				// * (뒤에 지도를 클릭했을때 주소반환이라던가... 필요할 것으로 보임... 아닐수도..?)
 	        }
 			
 			$(document).ready(function () {
@@ -171,8 +175,9 @@
     <script src="/static/js/navbar.js"></script>
     <script src="/static/js/counter.js"></script>
     <script src="/static/js/custom.js"></script>
+    
     <!-- google map api -->
-    <script async defer
+    <script async="false"
         src="http://maps.googleapis.com/maps/api/js?key= + ${googlemapkey} + &libraries=places&callback=initMap">
 	</script>
 	
