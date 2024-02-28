@@ -127,7 +127,7 @@
 	        }
 			
 			function updateMap() {
-	            map.setCenter({lat: ajaxData.lat, lng: ajaxData.lng});
+				map.setCenter({lat:ajaxData.lat, lng:ajaxData.lng});
 	        }
 			
 			$(document).ready(function () {
