@@ -122,16 +122,23 @@
 			function initMap() {
 	            map = new google.maps.Map(document.getElementById('map'), {
 	                center: {lat: 37.497952, lng: 127.027619},
-	                zoom: 15
+	                zoom: 18
 	            });
 	        }
 			
 			function updateMap() {
-				map.setCenter({lat: 37.4673709, lng: 126.9453359});
+				var latData = parseFloat(ajaxData.lat);
+				var lngData = parseFloat(ajaxData.lng);
+				alert(latData);
+				
+				map.setCenter({lat: latData, lng: lngData});
+				
 				// ajaxData.lat 과 ajaxData.lng 자리에 그냥 숫자를 넣었더니 setCenter이 잘 작동되었다.
 				// 또한 ajaxData.lat와 ajaxData.lng 는 값이 잘 반환되는 것을 볼 수 있다.
 				// 따라서 뷰를 못나타냈던 이유는 변수를 숫자로 바꾸는 과정이 없어서로 볼 수 있다!!!!
 				// * (뒤에 지도를 클릭했을때 주소반환이라던가... 필요할 것으로 보임... 아닐수도..?)
+				// *** 주소찾기? 등을 사용해서 장소를 특정화 한것 반환하는거 필요할 수 도..
+						// 못찾는 것은 "지역이름으로 검색해주세요" 란 문구 띄우기!!!!!!
 	        }
 			
 			$(document).ready(function () {
