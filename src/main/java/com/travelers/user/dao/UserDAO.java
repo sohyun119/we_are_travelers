@@ -3,7 +3,7 @@ package com.travelers.user.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("UserDAO")
 public interface UserDAO {
 	
 	public int insertUser(

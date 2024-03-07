@@ -20,23 +20,14 @@
 
 	<div id="wrap">
 	
-		<c:import url="/WEB-INF/jsp/include/header.jsp" />
+		
 		
 		<section class="content d-flex justify-content-center">
 		
-			<div class="mr-3">
-				<div class="d-flex">
-					<img class="imgBox" src="https://cdn.pixabay.com/photo/2017/03/24/07/28/instagram-2170420__340.png">
-					<img class="imgBox" src="https://cdn.pixabay.com/photo/2018/11/13/22/01/instagram-3814079__340.png">
-				</div>
-				<div class="d-flex">
-					<img class="imgBox" src="https://cdn.pixabay.com/photo/2018/11/13/22/01/instagram-3814079__340.png">
-					<img class="imgBox" src="https://cdn.pixabay.com/photo/2017/03/24/07/28/instagram-2170420__340.png">
-				</div>
-			</div>
+			
 		
 			<div class="loginBox bg-white border">
-				<h1 class="text-center mt-5 font-italic">Outstagram</h1>
+				<h1 class="text-center mt-5 font-italic">We are Travelers</h1>
 				<div class="mx-3">
 				<form id="loginForm">
 					<input type="text" id="loginIdInput" class="form-control bg-light mt-5" placeholder="아이디">
@@ -48,7 +39,7 @@
 			</div>
 		</section>
 		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
+		
 	
 	</div>
 	
