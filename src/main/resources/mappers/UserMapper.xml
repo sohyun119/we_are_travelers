@@ -4,14 +4,14 @@
 <mapper namespace="com.travelers.user.dao.UserDAO">
 
 	<insert id="insertUser" parameterType="map">
-		INSERT INTO `user`
+		INSERT INTO `USER`
 		(
-			`loginId`
-			, `password`
-			, `name`
-			, `email`
-			, `createdAt`
-			, `updatedAt`
+			`LOGIN_ID`
+			, `PASSWORD`
+			, `USER_NAME`
+			, `EMAIL`
+			, `CREATED_AT`
+			, `UPDATED_AT`
 		)
 		VALUES
 		(
@@ -28,9 +28,9 @@
 		SELECT
 			count(*)
 		FROM
-			`user`
+			`USER`
 		WHERE
-			`loginId` = #{loginId}
+			`LOGIN_ID` = #{loginId}
 	</select>
 
 </mapper>

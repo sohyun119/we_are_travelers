@@ -36,7 +36,7 @@
 					<input type="password" id="passwordInput" placeholder="비밀번호" class="form-control bg-light mt-4">
 					<input type="password" id="passwordConfirmInput" placeholder="비밀번호 확인" class="form-control bg-light mt-4">
 					<button type="button" id="joinBtn" class="btn btn-info mt-3 btn-block">가입</button> <hr>
-					<div class="text-center">계정이 있으신가요?<a href="/user/signin_view">로그인</a></div>
+					<div class="text-center">계정이 있으신가요?<a href="/user/signInView">로그인</a></div>
 					<br>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 				
 				$.ajax({
 					type:"get",
-					url:"/user/is_duplicate_id",
+					url:"/user/isDuplicateId",
 					data:{"loginId":loginId},
 					success:function(data){
 						if(data.is_duplicate == "true"){
@@ -124,12 +124,12 @@
 				
 				$.ajax({
 					type:"post",
-					url:"/user/sign_up",
+					url:"/user/signUp",
 					data:{"email":email,"name":name,"loginId":loginId,"password":password},
 					success:function(data){
 						if(data.result == "success"){
 							alert("회원가입 완료!");
-							location.href = "/user/signin_view";
+							location.href = "/user/signInView";
 						}else{
 							alert("회원가입을 실패했습니다.");
 						}

@@ -20,7 +20,7 @@ public class UserRestController {
 	private UserBO userBO;
 	
 	
-	@PostMapping("/singUp")
+	@PostMapping("/signUp")
 	public Map<String, String> signUp(
 			@RequestParam("email") String email
 			, @RequestParam("name") String name
@@ -41,7 +41,7 @@ public class UserRestController {
 		return map;
 	}
 	
-	@GetMapping("isDuplicateId")
+	@GetMapping("/isDuplicateId")
 	public Map<String, String> isDuplicate(
 			@RequestParam("loginId") String loginId
 			){

@@ -14,7 +14,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
-		<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
 
@@ -22,18 +21,18 @@
 	
 		
 		
-		<section class="content d-flex justify-content-center">
+		<section class=" content d-flex justify-content-center ">
 		
 			
 		
-			<div class="loginBox bg-white border">
-				<h1 class="text-center mt-5 font-italic">We are Travelers</h1>
+			<div class="loginBox bg-white border" style="margin: 90px;">
+				<h1 class="text-center mt-5  font-italic" >We are Travelers</h1>
 				<div class="mx-3">
 				<form id="loginForm">
-					<input type="text" id="loginIdInput" class="form-control bg-light mt-5" placeholder="아이디">
-					<input type="password" id="passwordInput" class="form-control bg-light mt-3" placeholder="비밀번호">
-					<button type="submit" class="btn btn-info btn-block my-3">로그인</button> <hr>
-					<div class="text-center">계정이 없으신가요?  <a href="/user/signup_view"> 가입하기</a></div>
+					<input type="text" id="loginIdInput" class="form-control mt-5"  placeholder="아이디" >
+					<input type="password" id="passwordInput" class="form-control mt-3" placeholder="비밀번호" >
+					<button type="submit" class="btn btn-block my-3 bg-info">로그인</button> <hr>
+					<div class="text-center">계정이 없으신가요?  <a href="/user/signUpView" > 가입하기</a></div>
 				</form>
 				</div>
 			</div>
