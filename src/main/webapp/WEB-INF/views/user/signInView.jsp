@@ -25,15 +25,18 @@
 		
 			
 		
-			<div class="loginBox bg-white border" style="margin: 90px;">
-				<h1 class="text-center mt-5  font-italic" >We are Travelers</h1>
-				<div class="mx-3">
-				<form id="loginForm">
-					<input type="text" id="loginIdInput" class="form-control mt-5"  placeholder="아이디" >
-					<input type="password" id="passwordInput" class="form-control mt-3" placeholder="비밀번호" >
-					<button type="submit" class="btn btn-block my-3 bg-info">로그인</button> <hr>
-					<div class="text-center">계정이 없으신가요?  <a href="/user/signUpView" > 가입하기</a></div>
-				</form>
+			<div class="loginBox bg-white border" style="background:linear-gradient(#4f94d4,#9ec2e6); border-radius:20px; color:white; margin: 90px;">
+				<div style="margin:50px;">
+					<h1 class="text-center mt-5 font-italic" >We are Travelers</h1>
+					<div class="mt-5">
+						<h6 class="mt-2 text-center" style="margin:5px 0px 5px 0px;">방문하고 싶은 곳의 소식을 보고 공유해보세요 :)</h6>
+						<form id="loginForm">
+							<input type="text" id="loginIdInput" class="form-control mt-5"  placeholder="아이디" >
+							<input type="password" id="passwordInput" class="form-control mt-3" placeholder="비밀번호" >
+							<button type="submit" class="btn btn-block my-3 " style="background-color:#01263a; color:white">로그인</button> <hr>
+							<div class="text-center">계정이 없으신가요? <a href="/user/signUpView" style="color:white">*가입하기*</a></div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -64,12 +67,12 @@
 				
 				$.ajax({
 					type:"post",
-					url:"/user/sign_in",
+					url:"/user/signIn",
 					data:{"loginId":loginId,"password":password},
 					success:function(data){
 						if(data.result == "success"){
 							alert("로그인 성공!");
-							location.href = "/post/timeline_view";
+							location.href = "/post/home";
 						}else{
 							alert("로그인 실패");
 						} 

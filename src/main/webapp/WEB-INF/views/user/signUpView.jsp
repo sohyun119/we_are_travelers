@@ -21,12 +21,12 @@
 	<div id="wrap" >
 		
 		
-		<section class="content d-flex justify-content-center " style="margin: 70px;">
+		<section class="content d-flex justify-content-center " style="margin: 50px;">
 			
-			<div class="joinBox bg-white border">
+			<div class="joinBox border" style="background:linear-gradient(#4f94d4,#9ec2e6); border-radius:20px; color:white">
 				<h1 class="text-center mt-5 font-italic">We are Travelers</h1>
 				<div class="mx-5">
-					<h6 class="text-secondary mt-3" style="margin:10px 0px 10px 0px;">관심있는 여행지에 관한 소식을 찾아보고 공유하며<br>여행 준비를 더욱 더 간편하게 시작해보세요!</h6>
+					<h6 class="mt-3 text-center" style="margin:10px 0px 10px 0px;">관심있는 여행지에 관한 소식을 찾아보고 공유하며<br>여행 준비를 더욱 더 간편하게 시작해보세요!</h6>
 					<input type="text" id="emailInput" placeholder="이메일 주소" class="form-control bg-light mt-4">
 					<input type="text" id="nameInput" placeholder="성명" class="form-control bg-light mt-4">
 					<div class="d-flex align-items-center mt-4">
@@ -35,8 +35,8 @@
 					</div>
 					<input type="password" id="passwordInput" placeholder="비밀번호" class="form-control bg-light mt-4">
 					<input type="password" id="passwordConfirmInput" placeholder="비밀번호 확인" class="form-control bg-light mt-4">
-					<button type="button" id="joinBtn" class="btn btn-info mt-3 btn-block">가입</button> <hr>
-					<div class="text-center">계정이 있으신가요?<a href="/user/signInView">로그인</a></div>
+					<button type="button" id="joinBtn" class="btn mt-3 btn-block" style="background-color:#01263a; color:white">가입</button> <hr>
+					<div class="text-center" >계정이 있으신가요? <a href="/user/signInView" style="color:white">*로그인*</a></div>
 					<br>
 				</div>
 			</div>

@@ -32,5 +32,14 @@
 		WHERE
 			`LOGIN_ID` = #{loginId}
 	</select>
+	
+	<select id="selectLoginUser" parameterType="map" resultType="com.travelers.user.dto.UserDTO">
+		SELECT
+			*
+		FROM
+			`USER`
+		WHERE
+			`LOGIN_ID` = #{loginId} AND `PASSWORD` = #{password}
+	</select>
 
 </mapper>

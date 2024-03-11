@@ -62,43 +62,45 @@
 		<div class="container">
 			<div class="row">
 			
-				<!-- start left map -->
-				<div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
-					<div class="contact-info">
-						<div class="address mt-2">
-							<i class="bi bi-geo-alt"></i>
-							<h4 class="mb-2">
-								Location name : 
-								<input type="text" id="locationName"><button id="locationBtn" type="button" class="btn" >조회</button>
-							</h4>
-							
-						</div>
-						<div>
-							<!-- google map 띄우기 -->
-							<div id="map" style="height: 400px; width: 100%;"></div>
+				<!-- input from -->
+				<form action="/post/create" method="post" enctype="multipart/form-data">
+					<!-- start left map -->
+					<div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+						<div class="contact-info">
+							<div class="address mt-2">
+								<i class="bi bi-geo-alt"></i>
+								<h4 class="mb-2">
+									Location name : 
+									<input type="text" id="locationName"><button id="locationBtn" type="button" class="btn" >조회</button>
+								</h4>
+								
+							</div>
+							<div>
+								<!-- google map 띄우기 -->
+								<div name="map" id="map" style="height: 400px; width: 100%;"></div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<!-- end left map -->
-				
-				<!-- start right input -->
-				<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-					<form action="#">
+					<!-- end left map -->
+					
+					<!-- start right input -->
+					<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
 						<div class="row">
 							<div class="col-12 mb-3">
-								<input type="" class="form-control" placeholder="사진 선택">
+								<input type="file" class="form-control" multiple="multiple" name="files" placeholder="사진 선택">
 							</div>
 							<div class="col-12 mb-3">
-								<textarea name="" id="" cols="30" rows="13" class="form-control" placeholder="text.."></textarea>
+								<textarea name="contentText" id="" cols="30" rows="13" class="form-control" placeholder="text.."></textarea>
 							</div>
 
 							<div class="col-12">
-								<input type="submit" value="Send Message" class="btn btn-primary">
+								<input type="submit" value="저장" class="btn btn-primary">
 							</div>
 						</div>
-					</form>
-				</div>
-				<!-- end right input -->
+					</div>
+					<!-- end right input -->
+				</form>
+				
 			</div>
 		</div>
 	</div> 

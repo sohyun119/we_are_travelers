@@ -56,6 +56,9 @@
 										<li><a href="#">뉴스보기</a></li>
 									</ul>
 								</li>
+								<li>
+									<a href="/user/signOut">로그아웃</a>
+								</li>
 							</ul>
 						</div>
 						<div class="col-2 text-end">

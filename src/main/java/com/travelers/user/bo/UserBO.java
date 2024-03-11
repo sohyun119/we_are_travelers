@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.travelers.common.EncryptUtils;
 import com.travelers.user.dao.UserDAO;
+import com.travelers.user.dto.UserDTO;
 
 @Service
 public class UserBO {
@@ -25,5 +26,12 @@ public class UserBO {
 		}
 	}
 	
+	public UserDTO loginUser(String loginId, String password) {
+		
+		UserDTO userDTO = userDAO.selectLoginUser(loginId, EncryptUtils.md5(password));
+		
+		
+		return userDTO;
+	}
 
 }

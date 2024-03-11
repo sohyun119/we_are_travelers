@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.travelers.user.bo.UserBO;
+import com.travelers.user.dto.UserDTO;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("user")
@@ -56,7 +60,32 @@ public class UserRestController {
 		return map;
 	}
 	
-	
+	@PostMapping("/signIn")
+	public Map<String, String> signIn(
+			@RequestParam("loginId") String loginId
+			,@RequestParam("password") String password
+			, HttpServletRequest request){
+		
+		UserDTO thisUser = userBO.loginUser(loginId, password);
+		
+		Map<String, String> map = new HashMap<>();
+		
+		if(thisUser != null) {
+			map.put("result", "success");
+			
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("userCd", thisUser.getUserCd());
+			session.setAttribute("userLoginId", thisUser.getLoginId());
+			session.setAttribute("userName", thisUser.getUserName());
+		}
+		else {
+			map.put("result", "fail");
+		}
+		
+		return map;
+	}
+
 	
 	
 
