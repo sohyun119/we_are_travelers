@@ -39,7 +39,7 @@ public class PostRestController {
 	
 	
 	@PostMapping("/create")
-	public String createPost(@RequestParam("map") String locationName
+	public void createPost(@RequestParam("map") String locationName
 							,@RequestParam("contentText") String content
 							,@RequestParam("files") List<MultipartFile> files
 							,HttpServletRequest request) throws IllegalStateException, IOException {
@@ -48,18 +48,24 @@ public class PostRestController {
 		// 지역 이름, 위도, 경도 가져오기
 		GeocoderResultDTO geocoderResultDTO = postBO.getCoordinatesApi(locationName);
 		if(geocoderResultDTO == null) {
-			return null;
+			return;
 		}
 		
 		// 이미지 저장 및 경로 리스트 가져오기
 		List<String> imgPathList = postBO.uploadFiles(files);
 		
+		// ajax로 .. 다시
+		System.out.println(imgPathList.get(0));
+		
 		HttpSession session = request.getSession();
 		
-		int resultCount = postBO.addPost(session.getAttribute("userCd"), session.getAttribute("userName"), imgPathList, content, 
+		// add post
+		int resultCount = postBO.addPost((int)session.getAttribute("userCd"),(String) session.getAttribute("userName"), imgPathList, content, 
 				geocoderResultDTO.getLocationName(), geocoderResultDTO.getLat(), geocoderResultDTO.getLng());
 		
-		return "";
+		System.out.println(resultCount);
+		
+		
 	}
 	
 	

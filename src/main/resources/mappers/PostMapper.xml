@@ -3,14 +3,30 @@
         
 <mapper namespace="com.travelers.post.dao.PostDAO">
 
-	<insert id="insertPost" parameterType="com.travelers.post.dto.PostDTO">
-		INSERT INTO
+	<insert id="insertPost" parameterType="map">
+		INSERT INTO `POST`
 		(
-		
+			`USER_CD`
+			,`USER_NAME`
+			,`IMG_PATH_LIST`
+			,`CONTENT`
+			,`LOCATION_NAME`
+			,`LATITUDE`
+			,`LONGITUDE`
+			,`CREATED_AT`
+			,`UPDATED_AT`
 		)
 		VALUES
 		(
-		
+			#{userCd}
+			,#{userName}
+			,#{imgPath}
+			,#{content}
+			,#{locationName}
+			,#{lat}
+			,#{lng}
+			,now()
+			,now()
 		)
 	</insert>
 
