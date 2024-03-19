@@ -63,7 +63,7 @@
 			<div class="row">
 			
 				<!-- input from -->
-				<form action="/post/create" method="post" enctype="multipart/form-data">
+				
 					<!-- start left map -->
 					<div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
 						<div class="contact-info">
@@ -77,7 +77,7 @@
 							</div>
 							<div>
 								<!-- google map 띄우기 -->
-								<div name="map" id="map" style="height: 400px; width: 100%;"></div>
+								<div id="map" style="height: 400px; width: 100%;"></div>
 							</div>
 						</div>
 					</div>
@@ -87,19 +87,18 @@
 					<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
 						<div class="row">
 							<div class="col-12 mb-3">
-								<input type="file" class="form-control" multiple="multiple" name="files" placeholder="사진 선택">
+								<input type="file" id="fileInput" class="form-control" multiple="multiple" name="files" placeholder="사진 선택">
 							</div>
 							<div class="col-12 mb-3">
-								<textarea name="contentText" id="" cols="30" rows="13" class="form-control" placeholder="text.."></textarea>
+								<textarea name="contentInput" id="contentInput" cols="30" rows="13" class="form-control" placeholder="text.."></textarea>
 							</div>
 
 							<div class="col-12">
-								<input type="submit" value="저장" class="btn btn-primary">
+								<button type="submit" id="saveBtn" class="btn btn-primary">저</button>
 							</div>
 						</div>
 					</div>
 					<!-- end right input -->
-				</form>
 				
 			</div>
 		</div>
@@ -120,6 +119,9 @@
 	
 			var ajaxData = {};
 			var map;
+			var loaction;
+			var lat;
+			var lng;
 			
 			function initMap() {
 	            map = new google.maps.Map(document.getElementById('map'), {
@@ -159,12 +161,65 @@
 							ajaxData = data;
 							alert(ajaxData.lat);
 							
+							document.getElementById("lat").innerHTML = ajaxData.lat;
+							document.getElementById("lng").innerHTML = ajaxData.lng;
+							document.getElementById("location").innerHTML = ajaxData.locationName;
+							
+							lat = ajaxData.lat;
+							lng = ajaxData.lng;
+							location = ajaxData.locationName;
+							
 							updateMap();
 						},
 						error:function(){
 							console.log("지역이름 조회 Error: " + error);
 						}
 					});
+				});
+				
+				$("#saveBtn").on("click", function(){
+					var content = $("#contentInput").val();
+					
+					if(lat == "" || lng == "" || location == ""){
+						alert("장소를 선택해주세요");
+						return;
+					}
+					
+					if($("#fileInput")[0].files.length == 0){
+						alert("사진을 업로드하세요");
+						return;
+					}
+					
+					// lat, lng location 안따져오고 있음 
+					alert("content="+content+", lat="+lat+",lng="+lng+",location="+location);
+					
+					var formData = new FormData();
+					formData.append("content", content);
+					formData.append("lat", lat);
+					formData.append("lng", lng);
+					formData.append("location", location);
+					formData.append("file", $("#fileInput")[0].files[0]);
+					
+					$.ajax({
+						type:"post",
+						url:"/post/create",
+						data:formData,
+						enctype:"multipart/form-data",
+						processData:false,
+						contentType:false,
+						success:function(data){
+							if(data.result == "success"){
+								alert("업로드 완료");
+								location.href = "/post/home";
+							}else{
+								alert("업로드를 실패했습니다");
+							}
+						},
+						error:function(){
+							alert("에러발생");
+						}
+					});
+					
 				});
 			});
 			

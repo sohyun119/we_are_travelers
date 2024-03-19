@@ -1,7 +1,8 @@
 package com.travelers.post;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -39,33 +40,32 @@ public class PostRestController {
 	
 	
 	@PostMapping("/create")
-	public void createPost(@RequestParam("map") String locationName
-							,@RequestParam("contentText") String content
-							,@RequestParam("files") List<MultipartFile> files
+	public Map<String, String> createPost(@RequestParam("lat") String lat
+							,@RequestParam("lng") String lng
+							,@RequestParam("location") String location
+							,@RequestParam("content") String content
+							,@RequestParam("file") MultipartFile file
 							,HttpServletRequest request) throws IllegalStateException, IOException {
-		
-		
-		// 지역 이름, 위도, 경도 가져오기
-		GeocoderResultDTO geocoderResultDTO = postBO.getCoordinatesApi(locationName);
-		if(geocoderResultDTO == null) {
-			return;
-		}
-		
-		// 이미지 저장 및 경로 리스트 가져오기
-		List<String> imgPathList = postBO.uploadFiles(files);
-		
-		// ajax로 .. 다시
-		System.out.println(imgPathList.get(0));
 		
 		HttpSession session = request.getSession();
 		
+		int userCd = (int)session.getAttribute("userCd");
+		String userName = (String)session.getAttribute("userName");
+		
+		System.out.println("userCd:"+userCd+", userName:"+userName);
+		
 		// add post
-		int resultCount = postBO.addPost((int)session.getAttribute("userCd"),(String) session.getAttribute("userName"), imgPathList, content, 
-				geocoderResultDTO.getLocationName(), geocoderResultDTO.getLat(), geocoderResultDTO.getLng());
+		int resultCount = postBO.addPost(userCd, userName, file, content, 
+				location, lat, lng);
 		
-		System.out.println(resultCount);
+		Map<String, String> map = new HashMap<>();
+		if(resultCount == 1) {
+			map.put("result", "success");
+		}else {
+			map.put("result", "fail");
+		}
 		
-		
+		return map;
 	}
 	
 	

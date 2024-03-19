@@ -8,7 +8,7 @@ public interface PostDAO {
 	
 	public int insertPost(@Param("userCd") int userCd
 						 ,@Param("userName") String userName
-						 ,@Param("imgPathString") String imgPath
+						 ,@Param("imgPath") String filePath
 						 ,@Param("content") String content
 						 ,@Param("locationName") String locationName
 						 ,@Param("lat") String lat

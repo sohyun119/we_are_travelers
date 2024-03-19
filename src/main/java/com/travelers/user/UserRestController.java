@@ -66,7 +66,13 @@ public class UserRestController {
 			,@RequestParam("password") String password
 			, HttpServletRequest request){
 		
-		UserDTO thisUser = userBO.loginUser(loginId, password);
+		// 일단 여기를 고쳐서 thisUser 값이 null이 안되게 한 다음
+		// postCreate jsp 화면 에서 location lat lng 값이 전달 안되는 이유를 찾아야함 
+		
+		UserDTO thisUser = userBO.loginUser(loginId, password); 
+		
+		
+		System.out.println("userCd : "+thisUser.getUserCd() + ", userName : "+thisUser.getUserName());
 		
 		Map<String, String> map = new HashMap<>();
 		
