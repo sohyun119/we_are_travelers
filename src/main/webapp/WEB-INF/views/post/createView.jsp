@@ -80,8 +80,6 @@
 								<div id="map" style="height: 400px; width: 100%;"></div>
 							</div>
 						</div>
-						<div id="lat"></div>
-						<div id="lng"></div>
 					</div>
 					<!-- end left map -->
 					
@@ -96,7 +94,7 @@
 							</div>
 
 							<div class="col-12">
-								<button type="submit" id="saveBtn" class="btn btn-primary">저</button>
+								<button type="submit" id="saveBtn" class="btn btn-primary">저장</button>
 							</div>
 						</div>
 					</div>
@@ -133,7 +131,6 @@
 			function updateMap() {
 				var latData = parseFloat(latInput);
 				var lngData = parseFloat(lngInput);
-				alert(latData+"updateMap !!!!!!!!!");
 				
 				map.setCenter({lat: latData, lng: lngData});
 				
@@ -149,8 +146,14 @@
 				
 				initMap();
 				
-				$("#locationBtn").on("click", function(){
+				//$("#locationBtn").on("click", function(){
+				$(document).on("click", "#locationBtn", function () {
 					var locationName = $("#locationName").val();
+					
+					if(locationName == null || locationName == ""){
+						alert("장소를 입력해주세요");
+						return;
+					}
 					
 					$.ajax({
 						type:"get",
@@ -158,14 +161,10 @@
 						data:{"locationName":locationName},
 						success:function(data){
 							ajaxData = data;
-							alert(ajaxData.lat + "ajax 데이터 가져옴");
 							
-							
-							document.getElementById("lat").innerHTML = ajaxData.lat;
+							/* document.getElementById("lat").innerHTML = ajaxData.lat;
 							document.getElementById("lng").innerHTML = ajaxData.lng;
-							// 문제 이유: location이 html내에 정의가 안되어있는데 document를 쓰니까~ 아래가 실행되지 않았었음
-							
-							alert("22"); // 안되고 있음 
+							// 문제 이유: location이 html내에 정의가 안되어있는데 document를 쓰니까~ 아래가 실행되지 않았었음 */
 							
 							latInput = ajaxData.lat;
 							lngInput = ajaxData.lng;
@@ -181,12 +180,13 @@
 					});
 				});
 				
-				$("#saveBtn").on("click", function(){
+				//$("#saveBtn").on("click", function(){
+				$(document).on("click", "#saveBtn", function (){
+					
 					var content = $("#contentInput").val();
 					let files = $("#fileInput").get(0).files; // 이렇게 가져와야 했음!!!!
 					
-					
-					if(lat == "" || lng == "" || location == ""){
+					if(latInput == "" || lngInput == "" || locationInput == ""){
 						alert("장소를 선택해주세요");
 						return;
 					}
@@ -197,17 +197,17 @@
 					}
 					
 					// lat, lng location 안따져오고 있음  -> 전역변수로 바꾸고 해결완료!!
-					alert("content="+content+", lat="+latInput+",lng="+lngInput+",location="+locationInput);
 					
 					var formData = new FormData();
 					formData.append("content", content);
 					formData.append("lat", latInput);
 					formData.append("lng", lngInput);
 					formData.append("location", locationInput);
+					
 					for(let i = 0; i < files.length; i++){
 						formData.append("files", files[i]);
 					}
-					//formData.append("file", $("#fileInput")[0].files[0]);
+					
 					
 					$.ajax({
 						type:"post",
