@@ -80,6 +80,8 @@
 								<div id="map" style="height: 400px; width: 100%;"></div>
 							</div>
 						</div>
+						<div id="lat"></div>
+						<div id="lng"></div>
 					</div>
 					<!-- end left map -->
 					
@@ -119,9 +121,7 @@
 	
 			var ajaxData = {};
 			var map;
-			var loaction;
-			var lat;
-			var lng;
+			var latInput,lngInput;
 			
 			function initMap() {
 	            map = new google.maps.Map(document.getElementById('map'), {
@@ -131,9 +131,9 @@
 	        }
 			
 			function updateMap() {
-				var latData = parseFloat(ajaxData.lat);
-				var lngData = parseFloat(ajaxData.lng);
-				alert(latData);
+				var latData = parseFloat(latInput);
+				var lngData = parseFloat(lngInput);
+				alert(latData+"updateMap !!!!!!!!!");
 				
 				map.setCenter({lat: latData, lng: lngData});
 				
@@ -150,7 +150,6 @@
 				initMap();
 				
 				$("#locationBtn").on("click", function(){
-					alert("버튼");
 					var locationName = $("#locationName").val();
 					
 					$.ajax({
@@ -159,19 +158,23 @@
 						data:{"locationName":locationName},
 						success:function(data){
 							ajaxData = data;
-							alert(ajaxData.lat);
+							alert(ajaxData.lat + "ajax 데이터 가져옴");
+							
 							
 							document.getElementById("lat").innerHTML = ajaxData.lat;
 							document.getElementById("lng").innerHTML = ajaxData.lng;
-							document.getElementById("location").innerHTML = ajaxData.locationName;
+							// 문제 이유: location이 html내에 정의가 안되어있는데 document를 쓰니까~ 아래가 실행되지 않았었음
 							
-							lat = ajaxData.lat;
-							lng = ajaxData.lng;
-							location = ajaxData.locationName;
+							alert("22"); // 안되고 있음 
+							
+							latInput = ajaxData.lat;
+							lngInput = ajaxData.lng;
 							
 							updateMap();
+						
 						},
 						error:function(){
+							alert("(지역이름 조회 에러) 정확한 지역명을 입력해주세요.");
 							console.log("지역이름 조회 Error: " + error);
 						}
 					});

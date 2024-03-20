@@ -30,7 +30,6 @@ public class UserBO {
 		
 		UserDTO userDTO = userDAO.selectLoginUser(loginId, EncryptUtils.md5(password));
 		
-		
 		return userDTO;
 	}
 

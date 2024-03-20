@@ -4,7 +4,6 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class UserDTO {
 	
 	private int userCd;
@@ -16,6 +15,17 @@ public class UserDTO {
 	private Date createdAt;
 	private Date updatedAt;
 	
+	// 생성자를 쓰지 않아서 null값이 반환 되는 이슈가 있었다. -> 블로그 정리 
+	public UserDTO(int userCd, String loginId, String password, String userName, String email, String profileImgPath,Date createdAt,Date updatedAt) {
+        this.userCd = userCd;
+        this.loginId = loginId;
+        this.password = password;
+        this.userName = userName;
+        this.email = email;
+        this.profileImgPath = profileImgPath;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 	
 	public int getUserCd() {
 		return userCd;
