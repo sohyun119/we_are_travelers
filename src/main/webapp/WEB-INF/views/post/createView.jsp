@@ -121,7 +121,7 @@
 	
 			var ajaxData = {};
 			var map;
-			var latInput,lngInput;
+			var latInput,lngInput,locationInput;
 			
 			function initMap() {
 	            map = new google.maps.Map(document.getElementById('map'), {
@@ -169,6 +169,7 @@
 							
 							latInput = ajaxData.lat;
 							lngInput = ajaxData.lng;
+							locationInput = locationName;
 							
 							updateMap();
 						
@@ -193,14 +194,14 @@
 						return;
 					}
 					
-					// lat, lng location 안따져오고 있음 
-					alert("content="+content+", lat="+lat+",lng="+lng+",location="+location);
+					// lat, lng location 안따져오고 있음  -> 전역변수로 바꾸고 해결완료!!
+					alert("content="+content+", lat="+latInput+",lng="+lngInput+",location="+locationInput);
 					
 					var formData = new FormData();
 					formData.append("content", content);
-					formData.append("lat", lat);
-					formData.append("lng", lng);
-					formData.append("location", location);
+					formData.append("lat", latInput);
+					formData.append("lng", lngInput);
+					formData.append("location", locationInput);
 					formData.append("file", $("#fileInput")[0].files[0]);
 					
 					$.ajax({
