@@ -138,13 +138,20 @@ public class PostBO {
 //	}
     
     
-    public int addPost(int userCd, String userName, MultipartFile file, String content, 
+    public int addPost(int userCd, String userName, MultipartFile[] files, String content, 
 				String locationName, String lat, String lng) {
     	
     	
-    	String filePath = FileManagerService.saveFile(userCd, file);
+    	String filePathList = "";
     	
-    	return postDAO.insertPost(userCd,userName,filePath, content, locationName, lat, lng);
+    	for(int i=0; i<files.length; i++) {
+    		filePathList += FileManagerService.saveFile(userCd, files[i]);
+    		if(i != files.length-1) {
+    			filePathList += ",";
+    		}
+    	}
+    	
+    	return postDAO.insertPost(userCd,userName,filePathList, content, locationName, lat, lng);
     	
     }
     

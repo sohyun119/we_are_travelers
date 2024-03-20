@@ -44,7 +44,7 @@ public class PostRestController {
 							,@RequestParam("lng") String lng
 							,@RequestParam("location") String location
 							,@RequestParam("content") String content
-							,@RequestParam("file") MultipartFile file
+							,@RequestParam("files") MultipartFile[] files
 							,HttpServletRequest request) throws IllegalStateException, IOException {
 		
 		HttpSession session = request.getSession();
@@ -55,7 +55,7 @@ public class PostRestController {
 		System.out.println("userCd:"+userCd+", userName:"+userName);
 		
 		// add post
-		int resultCount = postBO.addPost(userCd, userName, file, content, 
+		int resultCount = postBO.addPost(userCd, userName, files, content, 
 				location, lat, lng);
 		
 		Map<String, String> map = new HashMap<>();

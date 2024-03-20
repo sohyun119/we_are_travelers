@@ -183,13 +183,15 @@
 				
 				$("#saveBtn").on("click", function(){
 					var content = $("#contentInput").val();
+					let files = $("#fileInput").get(0).files; // 이렇게 가져와야 했음!!!!
+					
 					
 					if(lat == "" || lng == "" || location == ""){
 						alert("장소를 선택해주세요");
 						return;
 					}
 					
-					if($("#fileInput")[0].files.length == 0){
+					if(files.length == 0){
 						alert("사진을 업로드하세요");
 						return;
 					}
@@ -202,7 +204,10 @@
 					formData.append("lat", latInput);
 					formData.append("lng", lngInput);
 					formData.append("location", locationInput);
-					formData.append("file", $("#fileInput")[0].files[0]);
+					for(let i = 0; i < files.length; i++){
+						formData.append("files", files[i]);
+					}
+					//formData.append("file", $("#fileInput")[0].files[0]);
 					
 					$.ajax({
 						type:"post",
