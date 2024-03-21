@@ -1,7 +1,11 @@
 package com.travelers.post.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.travelers.post.dto.PostDetailDTO;
 
 @Repository
 public interface PostDAO {
@@ -13,6 +17,8 @@ public interface PostDAO {
 						 ,@Param("locationName") String locationName
 						 ,@Param("lat") String lat
 						 ,@Param("lng") String lng);
+	
+	
 	
 	
 

@@ -134,19 +134,12 @@
 				
 				map.setCenter({lat: latData, lng: lngData});
 				
-				// ajaxData.lat 과 ajaxData.lng 자리에 그냥 숫자를 넣었더니 setCenter이 잘 작동되었다.
-				// 또한 ajaxData.lat와 ajaxData.lng 는 값이 잘 반환되는 것을 볼 수 있다.
-				// 따라서 뷰를 못나타냈던 이유는 변수를 숫자로 바꾸는 과정이 없어서로 볼 수 있다!!!!
-				// * (뒤에 지도를 클릭했을때 주소반환이라던가... 필요할 것으로 보임... 아닐수도..?)
-				// *** 주소찾기? 등을 사용해서 장소를 특정화 한것 반환하는거 필요할 수 도..
-						// 못찾는 것은 "지역이름으로 검색해주세요" 란 문구 띄우기!!!!!!
 	        }
 			
 			$(document).ready(function () {
 				
 				initMap();
 				
-				//$("#locationBtn").on("click", function(){
 				$(document).on("click", "#locationBtn", function () {
 					var locationName = $("#locationName").val();
 					
@@ -162,10 +155,6 @@
 						success:function(data){
 							ajaxData = data;
 							
-							/* document.getElementById("lat").innerHTML = ajaxData.lat;
-							document.getElementById("lng").innerHTML = ajaxData.lng;
-							// 문제 이유: location이 html내에 정의가 안되어있는데 document를 쓰니까~ 아래가 실행되지 않았었음 */
-							
 							latInput = ajaxData.lat;
 							lngInput = ajaxData.lng;
 							locationInput = locationName;
@@ -180,7 +169,6 @@
 					});
 				});
 				
-				//$("#saveBtn").on("click", function(){
 				$(document).on("click", "#saveBtn", function (){
 					
 					var content = $("#contentInput").val();
@@ -196,7 +184,6 @@
 						return;
 					}
 					
-					// lat, lng location 안따져오고 있음  -> 전역변수로 바꾸고 해결완료!!
 					
 					var formData = new FormData();
 					formData.append("content", content);

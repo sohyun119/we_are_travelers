@@ -17,7 +17,6 @@ public class FileManagerService {
 	private static Logger logger = (Logger) LoggerFactory.getLogger(FileManagerService.class);
 
 	// 파일 저장
-	// 파일 저장
 		public static String saveFile(int userCd, MultipartFile file) {
 			
 			if(file == null) {

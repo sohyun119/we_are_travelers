@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
@@ -21,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.travelers.common.FileManagerService;
 import com.travelers.post.dao.PostDAO;
 import com.travelers.post.dto.GeocoderResultDTO;
+import com.travelers.post.dto.PostDTO;
+import com.travelers.post.dto.PostDetailDTO;
 
 @Service
 public class PostBO {
@@ -108,35 +112,6 @@ public class PostBO {
     	return geocoderResultDTO;
     }
     
-//    public List<String> uploadFiles(List<MultipartFile> files) throws IllegalStateException, IOException {
-//		
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-//		String uploadDate = sdf.format(new Date());
-//		
-//		List<String> imgPathList = new ArrayList<>();
-//		
-//		for(MultipartFile file : files) {
-//			if(!file.getOriginalFilename().isEmpty()) {
-//				
-//				// 원본 파일 이름
-//				String originalFilename = file.getOriginalFilename();
-//				
-//				// 범용고유식별자 UUID생성
-//				UUID uuid = UUID.randomUUID();
-//				
-//				// 파일 이름 수정
-//				String uploadFileName = uploadDate + "_" + uuid + "_" + originalFilename;
-//				
-//				imgPathList.add(fileRepositoryPath + uploadFileName);
-//				
-//				file.transferTo(new File(fileRepositoryPath + uploadFileName));
-//				
-//			}
-//		}
-//		System.out.println("imgPathList : "+imgPathList.get(0));
-//		return imgPathList;
-//	}
-    
     
     public int addPost(int userCd, String userName, MultipartFile[] files, String content, 
 				String locationName, String lat, String lng) {
@@ -155,6 +130,23 @@ public class PostBO {
     	
     }
     
+    public List<PostDetailDTO> LocationPostDetailList(String locationName){
+    	
+    	GeocoderResultDTO result = this.getCoordinatesApi(locationName);
+    	
+    	String lat = result.getLat();
+    	String lng = result.getLng();
+    	
+    	List<PostDetailDTO> postDetailDTO = new ArrayList<>();
+    	
+    	// comment 등 가져오기 (postCd)
+    	
+    	//List<PostDTO> postList = postDAO.selectLocationPostList(locationName, lat, lng);
+    	
+    	
+    	
+    	//return 
+    }
     
  
 }

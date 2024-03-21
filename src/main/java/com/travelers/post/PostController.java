@@ -1,10 +1,18 @@
 package com.travelers.post;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.travelers.post.dto.PostDetailDTO;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("post")
@@ -30,6 +38,19 @@ public class PostController {
 		
 		return "post/createView";
 	}
-
+	
+	// 지역별 게시물 검색
+	@GetMapping("/timelineView")
+	public String locationTimelineView(Model model,@RequestParam("locationName") String locationName) {
+		
+		List<PostDetailDTO> postDetailList = postBO.LocationPostDetailList(locationName);
+		
+		model.addAttribute("postDetailList", postDetailList);
+		
+		
+		return "";
+	}
+	
+	
 
 }
