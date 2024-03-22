@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.travelers.post.dto.PostDetailDTO;
+import com.travelers.post.dto.PostDTO;
 
 @Repository
 public interface PostDAO {
@@ -18,7 +18,9 @@ public interface PostDAO {
 						 ,@Param("lat") String lat
 						 ,@Param("lng") String lng);
 	
-	
+	public List<PostDTO> selectLocationPostList(@Param("locationName") String locationName
+							 ,@Param("lat") String lat
+							 ,@Param("lng") String lng);
 	
 	
 

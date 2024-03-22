@@ -130,22 +130,27 @@ public class PostBO {
     	
     }
     
-    public List<PostDetailDTO> LocationPostDetailList(String locationName){
-    	
+    
+    public List<PostDetailDTO> locationPostDetailList(String locationName) {
     	GeocoderResultDTO result = this.getCoordinatesApi(locationName);
     	
     	String lat = result.getLat();
     	String lng = result.getLng();
     	
-    	List<PostDetailDTO> postDetailDTO = new ArrayList<>();
+    	List<PostDetailDTO> postDetailList = new ArrayList<>();
     	
-    	// comment 등 가져오기 (postCd)
+    	List<PostDTO> postDTOList = postDAO.selectLocationPostList(locationName, lat, lng);
     	
-    	//List<PostDTO> postList = postDAO.selectLocationPostList(locationName, lat, lng);
-    	
-    	
-    	
-    	//return 
+    	for(PostDTO i : postDTOList) {
+    		// postDTO.getPostCd() 기반으로 comment, like 가져와서 PostDetailDTO에 set하기
+    		
+    		PostDetailDTO postDetailDTO = new PostDetailDTO();
+    		postDetailDTO.setPostDTO(i);
+    		
+    		postDetailList.add(postDetailDTO);
+    	}
+
+    	return postDetailList;    	
     }
     
  

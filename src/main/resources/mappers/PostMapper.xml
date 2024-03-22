@@ -30,6 +30,17 @@
 		)
 	</insert>
 
+	<select id="selectLocationPost" parameterType="map" resultType="com.travelers.post.dto.PostDTO">
+		SELECT
+			*
+		FROM
+			`POST`
+		WHERE
+			(`LATITUDE` = #{lat} AND `LONGITUDE` = #{lng})
+            OR `LOCATION_NAME` = #{locationName}
+	</select>
+
+
 
 
 </mapper>
