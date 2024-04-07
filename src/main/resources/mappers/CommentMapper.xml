@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.travelers.post.comment.dao.CommentDAO">
+
+	<select id="selectCommentList" parameterType="int" resultType="com.travelers.post.comment.dto.CommentDTO">
+		SELECT 
+			*
+		FROM
+			`COMMENT`
+		WHERE
+			`POST_CD` = #{postCd}
+	</select>
+
+
+
+
+</mapper>

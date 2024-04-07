@@ -22,6 +22,7 @@ public interface PostDAO {
 							 ,@Param("lat") String lat
 							 ,@Param("lng") String lng);
 	
+	public int deletePost(@Param("postCd") int postCd);
 	
 
 }

@@ -21,16 +21,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.travelers.common.FileManagerService;
+import com.travelers.post.comment.bo.CommentBO;
+import com.travelers.post.comment.dto.CommentDTO;
 import com.travelers.post.dao.PostDAO;
 import com.travelers.post.dto.GeocoderResultDTO;
 import com.travelers.post.dto.PostDTO;
 import com.travelers.post.dto.PostDetailDTO;
+import com.travelers.post.like.bo.LikeBO;
+import com.travelers.post.like.dto.LikeDTO;
 
 @Service
 public class PostBO {
 	
 	@Autowired
 	private PostDAO postDAO;
+	
+	@Autowired
+	private CommentBO commentBO;
+	
+	@Autowired
+	private LikeBO likeBO;
 	
 	@Value("${google.maps.key}")
 	private String googlemapskey;
@@ -142,15 +152,30 @@ public class PostBO {
     	List<PostDTO> postDTOList = postDAO.selectLocationPostList(locationName, lat, lng);
     	
     	for(PostDTO i : postDTOList) {
-    		// postDTO.getPostCd() 기반으로 comment, like 가져와서 PostDetailDTO에 set하기
+    		// postDTO.getPostCd() 기반으로 comment, like 가져와서 PostDetailDTO에 set하기 *
+    		List<CommentDTO> commentList = commentBO.selectCommentList(i.getPostCd());
+    		List<LikeDTO> likeList = likeBO.selectLikeList(i.getPostCd());
     		
     		PostDetailDTO postDetailDTO = new PostDetailDTO();
     		postDetailDTO.setPostDTO(i);
+    		//commentList, likeList 저장
     		
     		postDetailList.add(postDetailDTO);
     	}
 
     	return postDetailList;    	
+    }
+    
+    public int deletePost(int postCd) {
+    	
+    	int count = postDAO.deletePost(postCd);
+    	
+    	if(count == 1) {
+    		//comment 지우기 
+    	}
+    	
+    	
+    	return count;
     }
     
  

@@ -42,7 +42,7 @@ public class PostController {
 	}
 	
 	// 지역별 게시물 검색
-	@GetMapping("/locationTimelineView")
+	@GetMapping("/timelineView/location")
 	public String locationTimelineView(Model model,@RequestParam("locationName") String locationName) {
 		
 		List<PostDetailDTO> postDetailList = postBO.locationPostDetailList(locationName);

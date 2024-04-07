@@ -40,7 +40,10 @@
             OR `LOCATION_NAME` = #{locationName}
 	</select>
 
-
+	<delete id="deletePost" parameterType="int">
+		DELETE FROM `POST`
+		WHERE `POST_CD` = #{postCd}
+	</delete>
 
 
 </mapper>
