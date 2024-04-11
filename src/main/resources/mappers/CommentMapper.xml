@@ -11,6 +11,10 @@
 		WHERE
 			`POST_CD` = #{postCd}
 	</select>
+	
+	<insert id="insertComment" parameterType="map">
+		
+	</insert>
 
 
 

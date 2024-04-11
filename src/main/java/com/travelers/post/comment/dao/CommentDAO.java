@@ -11,5 +11,10 @@ import com.travelers.post.comment.dto.CommentDTO;
 public interface CommentDAO {
 	
 	public List<CommentDTO> selectCommentList(@Param("postCd") int postCd);
+	
+	public int insertComment(@Param("postCd") int postCd
+							, @Param("userCd") int usreCd
+							, @Param("userName") String userName
+							, @Param("comment") String comment);
 
 }
