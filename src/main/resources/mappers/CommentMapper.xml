@@ -13,9 +13,34 @@
 	</select>
 	
 	<insert id="insertComment" parameterType="map">
-		
+		INSERT INTO `COMMENT`
+		(
+			`POST_CD`
+			,`USER_CD`
+			,`USER_NAME`
+			,`CREATED_AT`
+			,`UPDATED_AT`
+		)
+		VALUES
+		(
+			#{postCd}
+			,#{userCd}
+			,#{userName}
+			,now()
+			,now()
+		)
 	</insert>
 
+	<update id="updateComment" parameterType="map">
+		UPDATE `COMMENT`
+		SET `COMMENT` = #{comment}
+		WHERE `COMMENT_CD` = #{commentCd}
+	</update>		
+
+	<delete id="deleteComment" parameterType="int">
+		DELETE FROM `COMMENT`
+		WHERE `COMMENT_CD` = #{commentCd}
+	</delete>
 
 
 

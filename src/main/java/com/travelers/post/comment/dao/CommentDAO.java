@@ -16,5 +16,11 @@ public interface CommentDAO {
 							, @Param("userCd") int usreCd
 							, @Param("userName") String userName
 							, @Param("comment") String comment);
+	
+	public int updateComment(@Param("commentCd") int commentCd
+							,@Param("comment") String comment);
+	
+	public int deleteComment(@Param("commentCd") int commentCd);
+
 
 }

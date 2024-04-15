@@ -22,5 +22,12 @@ public class LikeBO {
 		
 		return likeList;
 	}
+	
+	public int addLikePost(int postCd, int userCd, String userName) {
+		
+		// if 이미 있으면 return 0 처리하기
+		
+		return likeDAO.insertLikePost(postCd, userCd, userName);
+	}
 
 }

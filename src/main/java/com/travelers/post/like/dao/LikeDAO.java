@@ -11,5 +11,9 @@ import com.travelers.post.like.dto.LikeDTO;
 public interface LikeDAO {
 	
 	public List<LikeDTO> selectLikeList(@Param("postCd") int postCd);
+	
+	public int insertLikePost(@Param("postCd") int postCd
+							, @Param("userCd") int userCd
+							, @Param("userName") String userName);
 
 }

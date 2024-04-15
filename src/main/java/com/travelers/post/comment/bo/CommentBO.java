@@ -21,5 +21,15 @@ public class CommentBO {
 	public int createComment(int postCd, int userCd, String userName, String comment) {
 		return commentDAO.insertComment(postCd, userCd, userName, comment);
 	}
+	
+	public int updateComment(int commentCd, String comment) {
+		return commentDAO.updateComment(commentCd, comment);
+	}
+	
+	public int deleteComment(int commentCd) {
+		return commentDAO.deleteComment(commentCd);
+	}
+	
+
 
 }
