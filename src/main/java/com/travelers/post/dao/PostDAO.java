@@ -18,11 +18,22 @@ public interface PostDAO {
 						 ,@Param("lat") String lat
 						 ,@Param("lng") String lng);
 	
+	public int updatePost(@Param("postCd") int postCd
+						,@Param("userCd") int userCd
+						,@Param("userName") String userName
+						,@Param("content") String content
+						,@Param("locationName") String locationName
+						,@Param("lat") String lat
+						,@Param("lng") String lng);
+	
+	
 	public List<PostDTO> selectLocationPostList(@Param("locationName") String locationName
 							 ,@Param("lat") String lat
 							 ,@Param("lng") String lng);
 	
 	public int deletePost(@Param("postCd") int postCd);
+	
+	public PostDTO selectPostOne(@Param("postCd") int postCd);
 	
 
 }

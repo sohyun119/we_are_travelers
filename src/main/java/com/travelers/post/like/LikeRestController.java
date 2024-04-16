@@ -39,5 +39,21 @@ public class LikeRestController {
 		return map;
 	}
 	
+	@GetMapping("/delete")
+	public Map<String, String> deleteLikePost(int likeCd){
+		
+		Map<String, String> map = new HashMap<>();
+		
+		int count = likeBO.deleteLikePost(likeCd);
+		
+		if(count == 1) {
+			map.put("result", "success");
+		}else {
+			map.put("result", "fail");
+		}
+		
+		return map;
+	}
+	
 
 }

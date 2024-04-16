@@ -79,7 +79,6 @@ public class PostBO {
        
     }
     
-
     
     private Map<String, Object> parseCoordinates(String jsonString){
     	JSONParser jsonParser = new JSONParser();
@@ -140,6 +139,13 @@ public class PostBO {
     	
     }
     
+    public int updatePost(int postCd, int userCd, String userName, String content, 
+			String locationName, String lat, String lng) {
+	
+		return postDAO.updatePost(postCd, userCd, userName, content, locationName, lat, lng);
+	
+    }
+    
     
     public List<PostDetailDTO> locationPostDetailList(String locationName) {
     	GeocoderResultDTO result = this.getCoordinatesApi(locationName);
@@ -166,14 +172,37 @@ public class PostBO {
     	return postDetailList;    	
     }
     
+    // 사용자의 팔로우 list를 가지고 모든 postDetail List를 가져온다.
+    // coding ...
+    
+    
+    public PostDTO postOne(int postCd) {
+    	return postDAO.selectPostOne(postCd);
+    }
+    
+    public PostDetailDTO postDetail(int postCd) {
+    	
+    	PostDetailDTO postDetailDTO = new PostDetailDTO();
+    	
+    	PostDTO postDTO = this.postOne(postCd);
+    	List<CommentDTO> commentList = commentBO.selectCommentList(postCd);
+    	List<LikeDTO> likeList = likeBO.selectLikeList(postCd);
+    	
+    	postDetailDTO.setPostDTO(postDTO);
+    	postDetailDTO.setCommentDTOList(commentList);
+    	postDetailDTO.setLikeDTOList(likeList);
+    	
+    	return postDetailDTO;
+    }
+    
     public int deletePost(int postCd) {
     	
     	int count = postDAO.deletePost(postCd);
     	
     	if(count == 1) {
-    		//comment 지우기 
+    		commentBO.deleteCommentList(postCd);
+			likeBO.deleteLikePostList(postCd);
     	}
-    	
     	
     	return count;
     }

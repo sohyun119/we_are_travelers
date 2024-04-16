@@ -53,6 +53,8 @@ public class PostController {
 		return "post/timelineView";
 	}
 	
+	// user별 게시물 검색
+	
 	
 
 }

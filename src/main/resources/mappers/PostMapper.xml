@@ -44,6 +44,27 @@
 		DELETE FROM `POST`
 		WHERE `POST_CD` = #{postCd}
 	</delete>
+	
+	<update id="updatePost" parameterType="map">
+		UPDATE `POST`
+		SET
+			`CONTENT`= #{content}, `LAT` = #{lat}, `LNG` = #{lng}, `LOCATION_NAME` = #{locationName}
+		WHERE
+			`POST_CD` = #{postCd} AND `USER_CD` = #{userCd}
+	</update>
+	
+	<select id="selectPostOne" parameterType="int" resultType="com.travelers.post.dto.PostDTO">
+		SELECT
+			*
+		FROM
+			`POST`
+		WHERE
+			`POST_CD` = #{postCd}
+	</select>
+	
+	
+	
+	
 
 
 </mapper>

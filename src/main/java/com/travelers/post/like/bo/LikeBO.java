@@ -23,11 +23,27 @@ public class LikeBO {
 		return likeList;
 	}
 	
+	public int existLikePost(int postCd, int userCd) {
+		return likeDAO.existLikePost(postCd, userCd);
+	}
+	
 	public int addLikePost(int postCd, int userCd, String userName) {
 		
-		// if 이미 있으면 return 0 처리하기
+		// 이미 좋아요 처리 한 것은 중복처리 되지 않게
+		int existLikePost = this.existLikePost(postCd, userCd);
+		if(existLikePost >= 1) {
+			return 0;
+		}
 		
 		return likeDAO.insertLikePost(postCd, userCd, userName);
+	}
+	
+	public int deleteLikePost(int likeCd) {
+		return likeDAO.deleteLikePost(likeCd);
+	}
+	
+	public int deleteLikePostList(int postCd) {
+		return likeDAO.deleteLikePostList(postCd);
 	}
 
 }

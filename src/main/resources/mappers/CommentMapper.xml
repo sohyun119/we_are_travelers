@@ -41,6 +41,11 @@
 		DELETE FROM `COMMENT`
 		WHERE `COMMENT_CD` = #{commentCd}
 	</delete>
+	
+	<delete id="deleteCommentList" parameterType="int">
+		DELETE FROM `COMMENT`
+		WHERE `POST_CD` = #{postCd}
+	</delete>
 
 
 

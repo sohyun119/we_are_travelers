@@ -21,6 +21,8 @@ public interface CommentDAO {
 							,@Param("comment") String comment);
 	
 	public int deleteComment(@Param("commentCd") int commentCd);
+	
+	public int deleteCommentList(@Param("postCd") int postCd);
 
 
 }

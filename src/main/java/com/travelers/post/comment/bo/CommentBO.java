@@ -30,6 +30,10 @@ public class CommentBO {
 		return commentDAO.deleteComment(commentCd);
 	}
 	
+	public int deleteCommentList(int postCd) {
+		return commentDAO.deleteCommentList(postCd);
+	}
+	
 
 
 }

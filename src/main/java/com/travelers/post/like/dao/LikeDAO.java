@@ -16,4 +16,11 @@ public interface LikeDAO {
 							, @Param("userCd") int userCd
 							, @Param("userName") String userName);
 
+	public int existLikePost(@Param("postCd") int postCd
+							,@Param("userCd") int userCd);
+	
+	public int deleteLikePost(@Param("likeCd") int likeCd);
+	
+	public int deleteLikePostList(@Param("postCd") int postCd);
+	
 }

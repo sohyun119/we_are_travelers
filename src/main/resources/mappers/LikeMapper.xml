@@ -11,6 +11,44 @@
 		WHERE
 			`POST_CD` = #{postCd}
 	</select>
+	
+	<select id="existLikePost" parameterType="map" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			`LIKE`
+		WHERE
+			`POST_CD` = #{postCd} AND `USER_CD` = #{userCd}
+	</select>
+	
+	<insert id="insertLikePost" parameterType="map">
+		INSERT INTO `LIKE`
+		(
+			`POST_CD`
+			,`USER_CD`
+			,`USER_NAME`
+		)
+		VALUES
+		(
+			#{postCd}
+			,#{userCd}
+			,#{userName}
+		)
+	</insert>
+	
+	<delete id="deleteLikePost" parameterType="int">
+		DELETE FROM
+			`LIKE`
+		WHERE
+			`LIKE_CD` = #{likeCd}
+	</delete>
+	
+	<delete id="deleteLikePostList" parameterType="int">
+		DELETE FROM
+			`LIKE`
+		WHERE
+			`POST_CD` = #{postCd}
+	</delete>
 
 
 
