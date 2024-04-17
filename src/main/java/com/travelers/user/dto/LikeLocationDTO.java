@@ -1,8 +1,5 @@
 package com.travelers.user.dto;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class LikeLocationDTO {
 	
 	private int locationCd;

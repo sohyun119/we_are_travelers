@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.travelers.user.dao.UserDAO">
+
+	<insert id="insertSubscribeUser" parameterType="map">
+		INSERT INTO `SUBSCRIBE`
+		(
+			`THIS_USER_CD`
+			,`USER_CD`
+			,`THIS_USER_NAME`
+			,`USER_NAME`
+			,CREATED_AT`
+		)
+		VALUES
+		(
+			#{thisUserCd}
+			,#{userCd}
+			,#{thisUserName}
+			,#{userName}
+			,now()
+		)
+	</insert>
+	
+	<delete id="deleteSubscribeUser" parameterType="int">
+		DELETE FROM `subscribe`
+		WHERE `SUBSCRIBE_CD` = #{sucscribeCd}
+	</delete>
+	
+	<select id="isSubscribeUser" parameterType="map">
+		SELECT
+			count(*)
+		FROM
+			`SUBSCRIBE`
+		WHERE
+			`THIS_USER_CD` = #{thisUserCd}
+			AND
+			`USER_CD` = #{userCd}
+	</select>
+	
+	<select id="subscribeUserList" parameterType="int" resultType="com.travelers.user.subscribe.dto.SubscribeDTO">
+		SELECT
+			* 
+		FROM
+			`SUBSCRIBE`
+		WHERE
+			`USER_CD` = #{userCd}
+	</select>
+	
+	<select id="iSubscribeUserList" parameterType="int" resultType="com.travelers.user.subscribe.dto.SubscribeDTO">
+		SELECT
+			* 
+		FROM
+			`SUBSCRIBE`
+		WHERE
+			`THIS_USER_CD` = #{thisUserCd}
+	</select>
+
+</mapper>

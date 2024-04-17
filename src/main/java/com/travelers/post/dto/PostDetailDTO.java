@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import com.travelers.post.comment.dto.CommentDTO;
 import com.travelers.post.like.dto.LikeDTO;
 
-@Component
 public class PostDetailDTO {
 	
 	private PostDTO postDTO;

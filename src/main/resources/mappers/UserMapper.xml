@@ -41,5 +41,6 @@
 		WHERE
 			`LOGIN_ID` = #{loginId} AND `PASSWORD` = #{password}
 	</select>
+	
 
 </mapper>
